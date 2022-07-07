@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { User } from './user/entities/user.entity';
 import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -15,10 +16,12 @@ import { UserService } from './user/user.service';
       username: 'samuel',
       password: 'mMpvSZEakGZAhjnH',
       database: 'apinest',
-      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      // entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,
+      autoLoadEntities: true
     }),
-    TypeOrmModule.forFeature([User])
+    TypeOrmModule.forFeature([User]),
+    ProductModule
   ],
   controllers: [AppController, UserController],
   providers: [AppService, UserService],

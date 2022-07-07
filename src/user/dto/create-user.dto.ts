@@ -14,7 +14,7 @@ export class CreateUserDto {
     edad: number;
 
     @IsNotEmpty()
-    @MinLength(3, {groups: ['admin', 'users']})
+    @MinLength(3)
     type:string;
 
     @IsEmail()

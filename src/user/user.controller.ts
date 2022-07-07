@@ -3,6 +3,7 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
+
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -17,6 +18,13 @@ export class UserController {
       });
     })
     .catch(err => {
+
+      if(err.errno == 1062){
+        return res.status(HttpStatus.FORBIDDEN).json({
+          "status": false,
+          "Message" : "El correo ya ha sigo registrado, por favor intente con otro"
+        });
+      }
       res.status(HttpStatus.FORBIDDEN).json({
         "status": false,
           err

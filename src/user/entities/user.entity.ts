@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 import { CreateUserDto } from "../dto/create-user.dto";
 
 @Entity()
@@ -18,7 +18,7 @@ export class User {
     @Column()
     type:string;
 
-    @Column()
+    @Column({ length: 100, unique:true} )
     mail: string;
 
     @Column()
