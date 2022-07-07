@@ -13,6 +13,12 @@ export class User {
     last_name: string;
 
     @Column()
+    edad: number;
+
+    @Column()
+    type:string;
+
+    @Column()
     mail: string;
 
     @Column()
@@ -25,6 +31,8 @@ export class User {
         const user = new User();
         user.mail = data.mail;
         user.last_name = data.last_name;
+        user.edad = data.edad;
+        user.type = data.type;
         user.password = data.password;
         user.date_birth = data.date_birth;
 
